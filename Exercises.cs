@@ -54,5 +54,28 @@ namespace entra21_tests
             }
             return soma;
         }
+        
+        public int Exercise3()
+        {
+            var i = 1;
+
+            for (i = 1; i < 200; i += 2)
+            {
+                
+            }
+            return i;
+        }
+
+        public double Exercise4()
+        {
+            var soma = 0;
+            var idade = 0;
+            var counter = 0;
+            var average = 0.0;
+
+            average = soma / counter;
+            return average;
+		}
+        
     }
 }
