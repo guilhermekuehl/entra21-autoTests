@@ -115,7 +115,7 @@ namespace entra21_tests
         }
     
         [Fact]
-        public void should_return_()
+        public void should_return_a_numbers()
         {
             var exercise = new Exercises();
 

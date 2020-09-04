@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace entra21_tests
 {
@@ -66,14 +67,16 @@ namespace entra21_tests
             return i;
         }
 
-        public double Exercise4()
+        public double Exercise4(List<int> ages)
         {
-            var soma = 0;
-            var idade = 0;
-            var counter = 0;
-            var average = 0.0;
+            var soma = 0.0;
+            var answers = ages.Count;
+            foreach (var item in ages)
+            {
+                soma += item;
+            }
 
-            average = soma / counter;
+            var average = soma / answers;
             return average;
 		}
         
