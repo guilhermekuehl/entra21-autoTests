@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace entra21_tests
@@ -115,7 +116,7 @@ namespace entra21_tests
         }
     
         [Fact]
-        public void should_return_a_numbers()
+        public void should_return_a_numbers_between_0_to_200()
         {
             var exercise = new Exercises();
 
@@ -136,5 +137,62 @@ namespace entra21_tests
             Object.Equals(expectedOutput, returnedValues);
         }
     
+        [Fact]
+        public void should_return_a_8_when_passed_7_and_9()
+        {
+            var exercise = new Exercises();
+
+            var myList = new List<int>(){7, 9};
+
+            var returnedValues = exercise.Exercise4(myList);
+
+            var expectedOutput = 8;
+
+            Object.Equals(expectedOutput, returnedValues);
+        }
+        
+        [Fact]
+        public void should_return_a_10_when_passed_8_10_and_12()
+        {
+            var exercise = new Exercises();
+
+            var myList = new List<int>(){8, 10, 12};
+
+            var returnedValues = exercise.Exercise4(myList);
+
+            var expectedOutput = 10;
+
+            Assert.Equal(expectedOutput, returnedValues);
+        }
+
+        [Fact]
+        public void should_return_a_10_when_passed_12_14_16_18()
+        {
+            var exercise = new Exercises();
+
+            var myList = new List<int>(){12, 14, 16, 18};
+
+            var returnedValues = exercise.Exercise4(myList);
+
+            var expectedOutput = 15;
+
+            Assert.Equal(expectedOutput, returnedValues);
+        }
+
+         [Fact]
+        public void should_return_()
+        {
+            var exercise = new Exercises();
+
+            var myList = new List<int>(){12, 14, 16, 18};
+
+            var returnedValues = exercise.Exercise4(myList);
+
+            var expectedOutput = 15;
+
+            Assert.Equal(expectedOutput, returnedValues);
+        }
+
+
     }
 }

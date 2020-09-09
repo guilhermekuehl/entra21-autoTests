@@ -47,13 +47,13 @@ namespace entra21_tests
         }
         public int Exercise2()
         {
-            var soma = 0;
+            var sum = 0;
 
             for (int i = 1; i <= 100; i++)
             {
-				soma += i;
+				sum += i;
             }
-            return soma;
+            return sum;
         }
         
         public int Exercise3()
@@ -69,16 +69,35 @@ namespace entra21_tests
 
         public double Exercise4(List<int> ages)
         {
-            var soma = 0.0;
+            var sum = 0.0;
             var answers = ages.Count;
             foreach (var item in ages)
             {
-                soma += item;
+                sum += item;
             }
 
-            var average = soma / answers;
+            var average = sum / answers;
+            
             return average;
 		}
         
+		public double Exercise5()
+		{
+            const int arraysLength = 15;
+
+            var sum = 0.0;
+            var average = 0.0;
+
+            var arrayOfNumbers = new double[arraysLength];
+
+            for (int i = 0; i < arraysLength; i++)
+            {
+                sum += arrayOfNumbers[i];
+            }
+            average = sum / arraysLength;
+
+            return average;
+
+        }
     }
 }
