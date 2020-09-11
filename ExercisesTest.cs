@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Xunit;
 
 namespace entra21_tests
@@ -180,7 +181,7 @@ namespace entra21_tests
         }
 
          [Fact]
-        public void should_return_()
+        public void should_return_15_when_passed_12_14_16_18()
         {
             var exercise = new Exercises();
 
@@ -192,7 +193,22 @@ namespace entra21_tests
 
             Assert.Equal(expectedOutput, returnedValues);
         }
+        
+         [Theory]
+         [InlineData(new int[5] {19, 12, 12, 56, 41}, 20)]
+         [InlineData(new int[5] {18, 19, 40, 56, 41}, 40)]
+         [InlineData(new int[5] {16, 22, 21, 23, 41}, 60)]
+         [InlineData(new int[5] {28, 27, 26, 25, 40}, 80)]
+         [InlineData(new int[5] {28, 27, 26, 25, 24}, 100)]
+         [InlineData(new int[5] {78, 45, 44, 56, 41}, 0)]
+        public void should_return_20(int[] women, int expected)
+        {
+            var exercise = new Exercises();
 
+            var returnedValues = exercise.Exercise5(women.ToList());
+
+            Assert.Equal(expected, returnedValues);
+        }
 
     }
 }

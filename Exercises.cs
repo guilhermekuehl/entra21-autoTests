@@ -76,28 +76,24 @@ namespace entra21_tests
                 sum += item;
             }
 
-            var average = sum / answers;
+            var percent = sum / answers;
             
-            return average;
+            return percent;
 		}
         
-		public double Exercise5()
-		{
-            const int arraysLength = 15;
-
-            var sum = 0.0;
-            var average = 0.0;
-
-            var arrayOfNumbers = new double[arraysLength];
-
-            for (int i = 0; i < arraysLength; i++)
+		public int Exercise5(List<int> women)
+		{ 
+			var womenBetween18And35 = 0;
+            
+            for (int i = 0; i < 5; i++)
             {
-                sum += arrayOfNumbers[i];
+                if (women[i] >= 18 && women[i] <= 35)
+                {
+                    womenBetween18And35++;
+                }
             }
-            average = sum / arraysLength;
-
-            return average;
-
+            var percent = (womenBetween18And35 * 100) / 5;
+            return percent;
         }
     }
 }
