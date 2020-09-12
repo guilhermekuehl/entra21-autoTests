@@ -201,7 +201,7 @@ namespace entra21_tests
          [InlineData(new int[5] {28, 27, 26, 25, 40}, 80)]
          [InlineData(new int[5] {28, 27, 26, 25, 24}, 100)]
          [InlineData(new int[5] {78, 45, 44, 56, 41}, 0)]
-        public void should_return_20(int[] women, int expected)
+        public void should_return_20_40_60_80_100_0(int[] women, int expected)
         {
             var exercise = new Exercises();
 
@@ -210,5 +210,17 @@ namespace entra21_tests
             Assert.Equal(expected, returnedValues);
         }
 
+        [Theory]
+        [InlineData(10, 5.99, 60, 64692)]
+        public void should_return_64692(double cigarettes, double price, double years, double expected)
+        {
+            var exercise = new Exercises();
+
+            var returnedValues = exercise.Exercise7(cigarettes, price, years);
+
+            Assert.Equal(expected, returnedValues);
+        }
+
+        
     }
 }

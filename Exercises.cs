@@ -95,5 +95,17 @@ namespace entra21_tests
             var percent = (womenBetween18And35 * 100) / 5;
             return percent;
         }
+
+        public double Exercise7(double cigarrettes, double)
+        {
+            var cigarettes = 0.0;
+            var price = 0.0;
+            var years = 0.0;
+            var money = 0.0;            
+                        
+            money = (cigarettes * (price / 20)) * 30 * 12 * years;
+
+            return money;
+        }
     }
 }
