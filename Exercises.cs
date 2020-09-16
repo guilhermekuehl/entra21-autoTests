@@ -96,16 +96,61 @@ namespace entra21_tests
             return percent;
         }
 
-        public double Exercise7(double cigarrettes, double)
-        {
-            var cigarettes = 0.0;
-            var price = 0.0;
-            var years = 0.0;
-            var money = 0.0;            
-                        
-            money = (cigarettes * (price / 20)) * 30 * 12 * years;
+        public double Exercise7(double cigarettes, double price, double years)
+        {                           
+            var money = (cigarettes * (price / 20)) * 30 * 12 * years;
 
             return money;
+        }
+
+        public bool Exercise8(int x, int y, bool z)
+        {                           
+            if (x % y == 0)
+            {
+                z = true;
+            }
+            else
+            {
+                z = false;
+            }
+            return z;
+        }
+
+        public bool Exercise9(double number1, double number2, double number3, bool myBool)
+		{
+            if (number1 > number2 + number3)
+            {
+                myBool = true;
+            }
+            else
+            {
+                myBool = false;
+            }
+            return myBool;
+		}
+
+        public Exercise10(a, b, c)
+        {
+            var a = 0.0;
+            var b = 0.0;
+
+            System.Console.WriteLine("Digite o número a: ");
+            a = double.Parse(Console.ReadLine());
+            System.Console.WriteLine("Digite o número b: ");
+            b = double.Parse(Console.ReadLine());
+
+            if (a > b)
+            {
+                System.Console.WriteLine("A > B");
+            }
+            else if (b > a)
+            {
+                System.Console.WriteLine("B > A");
+            }
+            else
+            {
+                System.Console.WriteLine("A = B");
+            }
         }
     }
 }

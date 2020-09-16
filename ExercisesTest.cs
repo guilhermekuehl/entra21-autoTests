@@ -212,15 +212,42 @@ namespace entra21_tests
 
         [Theory]
         [InlineData(10, 5.99, 60, 64692)]
-        public void should_return_64692(double cigarettes, double price, double years, double expected)
+        [InlineData(20, 3.50, 30, 37800)]
+        public void should_return_64692_37800(double cigarettes, double price, double years, double expected)
         {
             var exercise = new Exercises();
 
             var returnedValues = exercise.Exercise7(cigarettes, price, years);
 
             Assert.Equal(expected, returnedValues);
+
         }
 
+        [Theory]
+        [InlineData(4, 2, true, true)]
+        [InlineData(21, 5, false, false)]
+        [InlineData(20, 5, true, true)]
+        public void should_return_true_false_true(int x, int y, bool z, bool expected)
+        {
+            var exercise = new Exercises();
+
+            var returnedValues = exercise.Exercise8(x, y, z);
+
+            Assert.Equal(expected, z);
+        }
         
+        [Theory]
+        [InlineData(23, 4, 30, false, false)]
+        [InlineData(32, 6, 3, true, true)]
+        [InlineData(16, 10, 10, false, false)]
+        public void should_return_false_true_false(double number1, double number2, double number3, bool myBool, bool expected)
+        {
+            var exercise = new Exercises();
+
+            var returnedValues = exercise.Exercise10(number1, number2, number3, myBool);
+
+            Assert.Equal(expected, myBool);
+
+        }
     }
 }
