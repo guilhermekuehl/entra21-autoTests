@@ -237,17 +237,30 @@ namespace entra21_tests
         }
         
         [Theory]
-        [InlineData(23, 4, 30, false, false)]
-        [InlineData(32, 6, 3, true, true)]
-        [InlineData(16, 10, 10, false, false)]
-        public void should_return_false_true_false(double number1, double number2, double number3, bool myBool, bool expected)
+        [InlineData(5, 4, ">")]
+        [InlineData(2, 4, "<")]
+        [InlineData(-23, -23, "=")]
+        public void should_return_greater_lesser_equal(double a, double b, string expected)
         {
             var exercise = new Exercises();
 
-            var returnedValues = exercise.Exercise10(number1, number2, number3, myBool);
+            var returnedValues = exercise.Exercise10(a, b);
 
-            Assert.Equal(expected, myBool);
+            Assert.Equal(expected, returnedValues);
 
+        }
+
+        [Theory]
+        [InlineData (2, 2, 1)]
+        [InlineData (2, 0, 0)]
+        [InlineData (100, 50, 2)]
+        public void should_return_1_0(int x, int y,int expected)
+        {
+            var exercise = new Exercises();
+
+            var returnedValues = exercise.Exercise11(x, y);
+
+            Assert.Equal(expected, returnedValues);
         }
     }
 }

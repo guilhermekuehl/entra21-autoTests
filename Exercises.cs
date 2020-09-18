@@ -129,28 +129,47 @@ namespace entra21_tests
             return myBool;
 		}
 
-        public Exercise10(a, b, c)
+        public string Exercise10(double a, double b)
         {
-            var a = 0.0;
-            var b = 0.0;
-
-            System.Console.WriteLine("Digite o número a: ");
-            a = double.Parse(Console.ReadLine());
-            System.Console.WriteLine("Digite o número b: ");
-            b = double.Parse(Console.ReadLine());
-
             if (a > b)
             {
-                System.Console.WriteLine("A > B");
+                return ">";
             }
             else if (b > a)
             {
-                System.Console.WriteLine("B > A");
+                return "<";
             }
             else
             {
-                System.Console.WriteLine("A = B");
+                return "=";
             }
         }
+        public double Exercise11(int firstNumber, int secondNumber)
+		{
+            if (secondNumber != 0)
+            {
+                return firstNumber / secondNumber;
+            }
+            return 0;
+		}
+    
+        static void Exercise13()
+		{
+            var biggestNumber = 0;
+
+            for (int i = 0; i < 10; i++)
+            {
+                System.Console.WriteLine("Forneça um número");
+                var input = Int32.Parse(Console.ReadLine());
+
+                if (input > biggestNumber)
+                {
+                    biggestNumber = input;
+                }
+            }
+
+            System.Console.WriteLine("O maior número é:");
+            System.Console.WriteLine(biggestNumber);
+		}
     }
 }
