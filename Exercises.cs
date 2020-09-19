@@ -153,23 +153,16 @@ namespace entra21_tests
             return 0;
 		}
     
-        static void Exercise13()
+        public double Exercise13(double biggestNumber, List<double> input)
 		{
-            var biggestNumber = 0;
-
             for (int i = 0; i < 10; i++)
             {
-                System.Console.WriteLine("Forneça um número");
-                var input = Int32.Parse(Console.ReadLine());
-
-                if (input > biggestNumber)
+                if (input[i] > biggestNumber)
                 {
-                    biggestNumber = input;
+                    biggestNumber = input[i];
                 }
             }
-
-            System.Console.WriteLine("O maior número é:");
-            System.Console.WriteLine(biggestNumber);
+            return biggestNumber;
 		}
     }
 }

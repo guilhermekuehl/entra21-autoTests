@@ -262,5 +262,18 @@ namespace entra21_tests
 
             Assert.Equal(expected, returnedValues);
         }
+        
+        [Theory]
+        [InlineData (10, new double[10]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}, 10)]
+        [InlineData (-1, new double[10]{-10, -9, -8, -7, -6, -5, -4, -3, -2, -1}, -1)]
+        [InlineData (7235, new double[10]{02, 215, 45, 634, 34, 55, 235, 7235, 823, 92}, 7235)]
+        public void should_return_true(double biggestNumber, double[] input,double expected)
+        {
+            var exercise = new Exercises();
+
+            var returnedValues = exercise.Exercise13(biggestNumber, input.ToList());
+
+            Assert.Equal(expected, returnedValues);
+        }
     }
 }
