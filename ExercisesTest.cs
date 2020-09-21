@@ -275,5 +275,27 @@ namespace entra21_tests
 
             Assert.Equal(expected, returnedValues);
         }
+        [Theory]
+        [InlineData (new double[3]{3, 2, 1}, new double[3]{1, 2, 3})]
+        [InlineData (new double[3]{-1, -2, -3}, new double[3]{-3, -2, -1})]
+        public void should_return_123_321negative_(double[] input, double[] expected)
+        {
+            var exercise = new Exercises();
+
+            var returnedValues = exercise.Exercise14(input.ToList());
+
+            Assert.Equal(expected, returnedValues);
+        }
+        
+        [Theory]
+        [InlineData (1, new int[11]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, new int[11]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10})]
+        public void should_return_1_until_10(int input, int[] tabuada, int[] expected)
+        {
+            var exercise = new Exercises();
+
+            var returnedValues = exercise.Exercise17(tabuada.ToList(), input);
+
+            Assert.Equal(expected, returnedValues);
+        }
     }
 }

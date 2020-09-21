@@ -164,5 +164,26 @@ namespace entra21_tests
             }
             return biggestNumber;
 		}
+        public List<double> Exercise14(List<double> input)
+        {
+            input.Sort();
+            return input;
+        }
+        
+        public List<int> Exercise17(List<int> tabuada, int input)
+		{
+            while (true)
+            {
+                if (input == -1)
+                {
+                    break;
+                }
+                for (var i = 0; i < 11; i++)
+                {
+                    tabuada[i] = input * i;
+                }
+            }
+            return tabuada;
+		}
     }
 }
