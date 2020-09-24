@@ -28,9 +28,9 @@ namespace entra21_tests
         {
             return Candidates.First(x => x.cpf == cpf).id;
         }
-        public List<string> GetCandidatesByName(string name)
+        public List<Guid> GetCandidatesIdByName(string name)
         {
-            return Candidates.FindAll(x => x.name == name).Select(N => N.name).ToList();
+            return Candidates.Where(x => x.name == name).Select(N => N.id).ToList();
         }
         public void Vote(Guid id)
         {

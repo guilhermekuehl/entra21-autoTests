@@ -49,8 +49,8 @@ namespace entra21_tests
             var cpf = "222.222.222-22";
             election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
             // Quando / Ação
-            var candidateJose = election.GetCandidatesByName(Jose);
-            var candidateAna = election.GetCandidatesByName(Ana);
+            var candidateJose = election.GetCandidatesIdByName(Jose);
+            var candidateAna = election.GetCandidatesIdByName(Ana);
             // Deve / Asserções
             Assert.NotEqual(candidateAna, candidateJose);
         }
@@ -104,9 +104,7 @@ namespace entra21_tests
             Assert.Equal(anaId, winners[0].id);
             Assert.Equal(2, winners[0].votes);
         }
-
-
-
+        
         [Fact]
 
         public void should_return_both_candidates_when_occurs_draw()
