@@ -23,23 +23,19 @@ namespace entra21_tests
                 return false;
             }
         }
+
         // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por cpf
         // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
-        
+
         public Guid GetCandidateIdByCpf(string cpf)
         {
-            return Candidates.Where(x => x.cpf == cpf).id;
+            return Candidates.First(x => x.cpf == cpf).id;
         }
-        public List<string> GetCandidateIdByName(string name)
+        public List<string> GetCandidatesByName(string name)
         {
-            var candidateIdByName = Candidates.First(x => x.name == name).id;
-            Candidates = Candidates.Select(candidateWithSameNames => {
-                return candidateWithSameNames[0].name == candidateWithSameNames[1].name
-                    ? (candidateWithSameNames[0].name, candidateWithSameNames.name[1])
-                    : candidateWithSameNames[0].name;
-                    }).ToList();
+            return Candidates.FindAll(x => x.name == name).Select(N => N.name).ToList();
         }
-        public void Vote(Guid id)
+        public void Vote(Guid id, string name)
         {
             Candidates = Candidates.Select(candidate => {
                 return candidate.id == id
