@@ -65,12 +65,12 @@ namespace entra21_tests
             var candidates = new List<string>{fernando, ana};
             var cpf = "333.333.333-33";
             election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
-            var fernandoId = election.GetCandidatesByName(fernando);
-            var anaId = election.GetCandidatesByName(ana);
+            var fernandoId = election.GetCandidateIdByCpf(fernando);
+            var anaId = election.GetCandidateIdByCpf(ana);
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
-            election.Vote(fernandoId, fernando);
-            election.Vote(fernandoId, fernando);
+            election.Vote(fernandoId);
+            election.Vote(fernandoId);
             // Deve / Asserções
             var candidateFernando = election.Candidates.Find(x => x.id == fernandoId);
             var candidateAna = election.Candidates.Find(x => x.id == anaId);
@@ -85,9 +85,10 @@ namespace entra21_tests
             var election = new Election();
             string fernando = "Fernando";
             string ana = "Ana";
+            var cpf = "555.555.555-55";
             var candidates = new List<string>{fernando, ana};
-            election.CreateCandidates(candidates, "Pa$$w0rd");
-            var anaId = election.GetCandidatesByName(ana);
+            election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
+            var anaId = election.GetCandidateIdByCpf(ana);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -117,11 +118,12 @@ namespace entra21_tests
             string fernando = "Fernando";
             string ana = "Ana";
             var candidates = new List<string>{fernando, ana};
+            var cpf = "666.666.666-66";
             
-            election.CreateCandidates(candidates, "Pa$$w0rd");
+            election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
             
-            var fernandoId = election.GetCandidatesByName(fernando);
-            var anaId = election.GetCandidatesByName(ana);
+            var fernandoId = election.GetCandidateIdByCpf(fernando);
+            var anaId = election.GetCandidateIdByCpf(ana);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election

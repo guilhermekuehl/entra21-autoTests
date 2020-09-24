@@ -35,7 +35,7 @@ namespace entra21_tests
         {
             return Candidates.FindAll(x => x.name == name).Select(N => N.name).ToList();
         }
-        public void Vote(Guid id, string name)
+        public void Vote(Guid id)
         {
             Candidates = Candidates.Select(candidate => {
                 return candidate.id == id
