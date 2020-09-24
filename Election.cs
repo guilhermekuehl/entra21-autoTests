@@ -24,9 +24,6 @@ namespace entra21_tests
             }
         }
 
-        // ToDo: Criar método que retorne um Guid que represente o candidato pesquisado por cpf
-        // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
-
         public Guid GetCandidateIdByCpf(string cpf)
         {
             return Candidates.First(x => x.cpf == cpf).id;
