@@ -11,10 +11,11 @@ namespace entra21_tests
         {
             // Dado / Setup
             var election = new Election();
-            var candidates = new List<string>{"José"};
-            var cpf = "000.000.000-00";
+            (string name, string cpf) candidate = ("José",  "111.111.111-11");
+            var candidates = new List<(string name, string cpf)>{candidate};
+            
             // Quando / Ação
-            var created = election.CreateCandidates(candidates, cpf, "incorrect");
+            var created = election.CreateCandidates(candidates, "incorrect");
             // Deve / Asserções
             Assert.Null(election.Candidates);
             Assert.False(created);
@@ -25,17 +26,16 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            string candidate = "José";
-            var candidates = new List<string>{candidate};
-            var cpf = "111.111.111-11";
+            (string name, string cpf) candidate = ("José",  "111.111.111-11");
+            var candidates = new List<(string name, string cpf)>{candidate};
             // Quando / Ação
             // Estamos acessando o MÉTODO CreateCandidates do OBJETO election
-            var created = election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
+            var created = election.CreateCandidates(candidates, "Pa$$w0rd");
             // Deve / Asserções
             Assert.True(created);
             // Estamos acessando a PROPRIEDADE Candidates, que faz parte do ESTADO do OBJETO election
             Assert.Equal(1, election.Candidates.Count);
-            Assert.Equal(candidate, election.Candidates[0].name);
+            Assert.Equal(candidate.name, election.Candidates[0].name);
         }
         [Fact]
         public void should_not_generate_same_id_for_both_candidates()
@@ -43,14 +43,13 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            string Jose = "José";
-            string Ana = "Ana";
-            var candidates = new List<string>{Jose, Ana};
-            var cpf = "222.222.222-22";
-            election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
+            (string name, string cpf) jose = ("José",  "111.111.111-11");
+            (string name, string cpf) ana = ("Ana",  "222.222.222-22");
+            var candidates = new List<(string name, string cpf)>{jose, ana};
+            election.CreateCandidates(candidates, "Pa$$w0rd");
             // Quando / Ação
-            var candidateJose = election.GetCandidatesIdByName(Jose);
-            var candidateAna = election.GetCandidatesIdByName(Ana);
+            var candidateJose = election.GetCandidatesIdByName(jose.name);
+            var candidateAna = election.GetCandidatesIdByName(ana.name);
             // Deve / Asserções
             Assert.NotEqual(candidateAna, candidateJose);
         }
@@ -60,13 +59,13 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            string fernando = "Fernando";
-            string ana = "Ana";
-            var candidates = new List<string>{fernando, ana};
-            var cpf = "333.333.333-33";
-            election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
-            var fernandoId = election.GetCandidateIdByCpf(fernando);
-            var anaId = election.GetCandidateIdByCpf(ana);
+            (string name, string cpf) fernando = ("Fernando",  "111.111.111-11");
+            (string name, string cpf) ana = ("Ana",  "222.222.222-22");
+
+            var candidates = new List<(string name, string cpf)>{fernando, ana};
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+            var fernandoId = election.GetCandidateIdByCpf(fernando.cpf);
+            var anaId = election.GetCandidateIdByCpf(ana.cpf);
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
             election.Vote(fernandoId);
@@ -83,12 +82,11 @@ namespace entra21_tests
             // Dado / Setup
             // OBJETO election
             var election = new Election();
-            string fernando = "Fernando";
-            string ana = "Ana";
-            var cpf = "555.555.555-55";
-            var candidates = new List<string>{fernando, ana};
-            election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
-            var anaId = election.GetCandidateIdByCpf(ana);
+            (string name, string cpf) fernando = ("Fernando",  "111.111.111-11");
+            (string name, string cpf) ana = ("Ana",  "222.222.222-22");
+            var candidates = new List<(string name, string cpf)>{fernando, ana};
+            election.CreateCandidates(candidates, "Pa$$w0rd");
+            var anaId = election.GetCandidateIdByCpf(ana.cpf);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election
@@ -113,15 +111,14 @@ namespace entra21_tests
             // OBJETO election
 
             var election = new Election();
-            string fernando = "Fernando";
-            string ana = "Ana";
-            var candidates = new List<string>{fernando, ana};
-            var cpf = "666.666.666-66";
+            (string name, string cpf) fernando = ("Fernando",  "111.111.111-11");
+            (string name, string cpf) ana = ("Ana",  "222.222.222-22");
+            var candidates = new List<(string name, string cpf)>{fernando, ana};
             
-            election.CreateCandidates(candidates, cpf, "Pa$$w0rd");
+            election.CreateCandidates(candidates, "Pa$$w0rd");
             
-            var fernandoId = election.GetCandidateIdByCpf(fernando);
-            var anaId = election.GetCandidateIdByCpf(ana);
+            var fernandoId = election.GetCandidateIdByCpf(fernando.cpf);
+            var anaId = election.GetCandidateIdByCpf(ana.cpf);
             
             // Quando / Ação
             // Estamos acessando o MÉTODO ShowMenu do OBJETO election

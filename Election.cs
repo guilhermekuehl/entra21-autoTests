@@ -8,14 +8,15 @@ namespace entra21_tests
     {
         // Propriedade abaixo:
         // Sempre em PascalCase
-        public List<(Guid id, string name, string cpf, int votes)> Candidates { get; set; }
-        public bool CreateCandidates(List<string> candidateNames, string password, string cpf)
+        public List<(Guid id, string name, string cpf, int votes)> Candidates { get; private set; }
+        public bool CreateCandidates(List<(string name, string cpf)> candidate, string password)
         {
             if (password == "Pa$$w0rd")
             {
-                Candidates = candidateNames.Select(candidateName => {
-                return (Guid.NewGuid(), candidateName, cpf, 0);
+                Candidates = candidate.Select(x => {
+                return (Guid.NewGuid(), x.name, x.cpf, 0);
                 }).ToList();
+
                 return true;
             }
             else
