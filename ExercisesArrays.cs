@@ -39,23 +39,100 @@ namespace entra21_tests
             return disordNumbers;
 		}
         
-        public int[] Exercise3()
+        public bool Exercise3()
         {
-            const int arraysLength = 10;
-            
-            var numbers = new double [arraysLength]{
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+            var numbers = new double[3]{
+                1, 2, 3
             };
-            const double userNumber = 2;
 
-            var foundNumber = 0.0;
+            var search = 2; 
 
-            foreach (var userNumber in numbers)
+            var found = false;
+
+            foreach (var item in numbers)
             {
-                
+                if (item == search)
+                {
+                    found = true;
+                    break;
+                }
             }
+            return found;
+        }
+        public bool Exercise4()
+		{
+            const int arraysLenght = 3;
             
-            return foundNumber;
+            var a = new double?[arraysLenght]{
+                10, 11, 12
+            };
+            var b = new double[arraysLenght]{
+                10, 11, 12
+            };
+            var result = new double[arraysLenght];
+
+            var arraysAreEquals = true;
+
+            for (int i = 0; i < arraysLenght; i++)
+            {
+                b[i] = result[i];
+
+                var hasEquals = false;
+
+                for (int j = 0; j < a.Length; j++)
+                {
+                    if(a[j] == result[i])
+                    {
+                        hasEquals = true;
+                        a[j] = null;
+                        break;
+                    }   
+                }
+
+                if (!hasEquals)
+                {
+                    arraysAreEquals = false;
+                }
+            }
+            return arraysAreEquals;
 		}
+        public void Exercise5()
+		{
+            const int arraysLength = 15;
+
+            var belowAverage = 0;
+            var aboveAverage = 0;
+            var onAverage = 0;
+
+            var soma = 0.0;
+            var average = 0.0;
+
+            var arrayOfNumbers = new double[arraysLength]{
+                9.0, 8.0, 7.0, 4.5, 8.0, 9.0, 10.0, 9.0, 8.0, 7.0, 4.5, 8.0, 9.0, 10.0, 9.0
+            };
+            
+            for (int i = 0; i < arraysLength; i++)
+            {
+                soma += arrayOfNumbers[i];
+            }
+            average = soma / arraysLength;
+
+            foreach (var item in arrayOfNumbers)
+            {
+                if(item < soma)
+                {
+                    belowAverage++;
+                }
+                else if(item > soma)
+                {
+                    aboveAverage++;
+                }
+                else
+                {
+                    onAverage++;
+                }
+            }           
+            
+        }
 	}    
 }

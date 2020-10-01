@@ -23,9 +23,50 @@ namespace entra21_tests
             Assert.Equal(expectedOutput, result);
         }
         [Fact]
-        public void should_return_10_values_direct_and_indirect_order()
+        public void should_return_3_numbers_indirect_order()
         {
+            var exercisesarrays = new ExercisesArrays();
+
+            var result = exercisesarrays.Exercise2();
             
+            var expectedOutput = new int[3]{
+                3, 2, 1
+            };
+
+            Assert.Equal(expectedOutput, result);
+        }
+        [Theory]
+        [InlineData(new int[3]{1, 2, 3}, 2, true, true)]
+        [InlineData(new int[3]{1, 2, 3}, 5, false, false)]
+        public void should_return_true_false_true(int numbers, int search, bool found, bool expected)
+        {
+            var exercise = new Exercises();
+
+            var returnedValues = exercise.Exercise8(numbers, search, found);
+
+            Assert.Equal(expected, found);
+        }
+
+        [Theory]
+        [InlineData(new double[3]{10, 11, 12}, new double[3]{10, 11, 12}, true)]
+        public void should_return_true(double[] a, double[] b, bool expectedOutput)
+        {
+            var exercisesarrays = new ExercisesArrays();
+
+            var result = exercisesarrays.Exercise4();
+
+            Assert.Equal(expectedOutput, result);
+        }
+        [Fact]
+        public void should_return_()
+        {
+            var exercisesarrays = new ExercisesArrays();
+
+            var result = exercisesarrays.Exercise4();
+            
+            var expectedOutput = true;
+
+            Assert.Equal(expectedOutput, result);
         }
     }
 }

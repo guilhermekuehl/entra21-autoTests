@@ -8,12 +8,13 @@ namespace entra21_tests
     {
         // Propriedade abaixo:
         // Sempre em PascalCase
-        public List<(Guid id, string name, string cpf, int votes)> Candidates { get; private set; }
+        private List<(Guid id, string name, string cpf, int votes)> candidates { get; set; }
+        public IReadOnlyCollection<(Guid id, string name, string cpf, int votes)> Candidates => candidates;
         public bool CreateCandidates(List<(string name, string cpf)> candidate, string password)
         {
             if (password == "Pa$$w0rd")
             {
-                Candidates = candidate.Select(x => {
+                candidates = candidate.Select(x => {
                 return (Guid.NewGuid(), x.name, x.cpf, 0);
                 }).ToList();
 
@@ -35,7 +36,7 @@ namespace entra21_tests
         }
         public void Vote(Guid id)
         {
-            Candidates = Candidates.Select(candidate => {
+            candidates = Candidates.Select(candidate => {
                 return candidate.id == id
                     ? (candidate.id, candidate.name, candidate.cpf, candidate.votes + 1)
                     : candidate;
@@ -43,17 +44,17 @@ namespace entra21_tests
         }
         public List<(Guid id, string name, string cpf, int votes)> GetWinners()
         {
-            var winners = new List<(Guid id, string name, string cpf, int votes)>{Candidates[0]};
+            var winners = new List<(Guid id, string name, string cpf, int votes)>{candidates[0]};
             for (int i = 1; i < Candidates.Count; i++)
             {
-                if (Candidates[i].votes > winners[0].votes)
+                if (candidates[i].votes > winners[0].votes)
                 {
                     winners.Clear();
-                    winners.Add(Candidates[i]);
+                    winners.Add(candidates[i]);
                 }
-                else if (Candidates[i].votes == winners[0].votes)
+                else if (candidates[i].votes == winners[0].votes)
                 {
-                    winners.Add(Candidates[i]);
+                    winners.Add(candidates[i]);
                 }
             }
             return winners;
