@@ -36,13 +36,13 @@ namespace entra21_tests
             Assert.Equal(expectedOutput, result);
         }
         [Theory]
-        [InlineData(new int[3]{1, 2, 3}, 2, true, true)]
-        [InlineData(new int[3]{1, 2, 3}, 5, false, false)]
-        public void should_return_true_false_true(int numbers, int search, bool found, bool expected)
+        [InlineData(new int[3]{1, 2, 3}, true, 2, true)]
+        [InlineData(new int[3]{1, 2, 3}, false, 2, false)]
+        public void should_return_true_false_true(int[] numbers, bool found, int search, bool expected)
         {
-            var exercise = new Exercises();
+            var exercisesarrays = new ExercisesArrays();
 
-            var returnedValues = exercise.Exercise8(numbers, search, found);
+            var returnedValues = exercisesarrays.Exercise3(numbers, found, search);
 
             Assert.Equal(expected, found);
         }

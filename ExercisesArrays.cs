@@ -35,20 +35,12 @@ namespace entra21_tests
 
             numbers.Reverse();
             disordNumbers = numbers;
-            
+
             return disordNumbers;
 		}
         
-        public bool Exercise3()
+        public bool Exercise3(int[] numbers, bool found, int search)
         {
-            var numbers = new double[3]{
-                1, 2, 3
-            };
-
-            var search = 2; 
-
-            var found = false;
-
             foreach (var item in numbers)
             {
                 if (item == search)
