@@ -18,7 +18,7 @@ namespace entra21_tests
             // Quando / Ação
             var created = election.CreateCandidates(candidates, "incorrect");
             // Deve / Asserções
-            Assert.Null(election.Candidates);
+            Assert.Empty(election.Candidates);
             Assert.False(created);
         }
         [Fact]
@@ -36,7 +36,7 @@ namespace entra21_tests
             Assert.True(created);
             // Estamos acessando a PROPRIEDADE Candidates, que faz parte do ESTADO do OBJETO election
             Assert.Equal(1, election.Candidates.Count);
-            Assert.Equal(candidate.name, election.Candidates.ElementAt(0).name);
+            Assert.Equal(candidate.name, election.Candidates.ElementAt(0).Name);
         }
         [Fact]
         public void should_not_generate_same_id_for_both_candidates()
@@ -72,10 +72,10 @@ namespace entra21_tests
             election.Vote(fernandoId);
             election.Vote(fernandoId);
             // Deve / Asserções
-            var candidateFernando = election.Candidates.First(x => x.id == fernandoId);
-            var candidateAna = election.Candidates.First(x => x.id == anaId);
-            Assert.Equal(2, candidateFernando.votes);
-            Assert.Equal(0, candidateAna.votes);
+            var candidateFernando = election.Candidates.First(x => x.Id == fernandoId);
+            var candidateAna = election.Candidates.First(x => x.Id == anaId);
+            Assert.Equal(2, candidateFernando.Votes);
+            Assert.Equal(0, candidateAna.Votes);
         }
         [Fact]
         public void should_return_Ana_as_winner_when_only_Ana_receives_votes()
@@ -100,8 +100,8 @@ namespace entra21_tests
             // Deve / Asserções
             
             Assert.Equal(1, winners.Count);
-            Assert.Equal(anaId, winners[0].id);
-            Assert.Equal(2, winners[0].votes);
+            Assert.Equal(anaId, winners[0].Id);
+            Assert.Equal(2, winners[0].Votes);
         }
         
         [Fact]
@@ -130,10 +130,10 @@ namespace entra21_tests
             
             // Deve / Asserções
             
-            var candidateFernando = winners.Find(x => x.id == fernandoId);
-            var candidateAna = winners.Find(x => x.id == anaId);
-            Assert.Equal(1, candidateFernando.votes);
-            Assert.Equal(1, candidateAna.votes);
+            var candidateFernando = winners.Find(x => x.Id == fernandoId);
+            var candidateAna = winners.Find(x => x.Id == anaId);
+            Assert.Equal(1, candidateFernando.Votes);
+            Assert.Equal(1, candidateAna.Votes);
         }
     }
 }

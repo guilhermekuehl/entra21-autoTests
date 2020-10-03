@@ -53,20 +53,43 @@ namespace entra21_tests
         {
             var exercisesarrays = new ExercisesArrays();
 
-            var result = exercisesarrays.Exercise4();
+            var result = exercisesarrays.Exercise4(a, b);
 
             Assert.Equal(expectedOutput, result);
         }
         [Fact]
-        public void should_return_()
+        public void should_return_8()
         {
             var exercisesarrays = new ExercisesArrays();
 
-            var result = exercisesarrays.Exercise4();
+            var result = exercisesarrays.Exercise5();
             
-            var expectedOutput = true;
+            var expectedOutput = 8;
 
             Assert.Equal(expectedOutput, result);
+        }
+        [Fact]
+        public void should_return_an_array_with_numbers_until_index_9_61_and_until_index_11_62()
+        {
+            var exercisesarrays = new ExercisesArrays();
+
+            var result = exercisesarrays.Exercise6();
+
+            Assert.Collection(
+                result,
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(61, item); },
+                item => { Assert.Equal(62, item); },
+                item => { Assert.Equal(62, item); }
+            );
         }
     }
 }

@@ -33,10 +33,7 @@ namespace entra21_tests
             };
             var disordNumbers = new int[arraysLength];
 
-            numbers.Reverse();
-            disordNumbers = numbers;
-
-            return disordNumbers;
+            return numbers.Reverse().ToArray();
 		}
         
         public bool Exercise3(int[] numbers, bool found, int search)
@@ -51,23 +48,17 @@ namespace entra21_tests
             }
             return found;
         }
-        public bool Exercise4()
+        public bool Exercise4(double[] a, double[] b)
 		{
             const int arraysLenght = 3;
             
-            var a = new double?[arraysLenght]{
-                10, 11, 12
-            };
-            var b = new double[arraysLenght]{
-                10, 11, 12
-            };
             var result = new double[arraysLenght];
 
             var arraysAreEquals = true;
 
             for (int i = 0; i < arraysLenght; i++)
             {
-                b[i] = result[i];
+                result[i] = b[i];
 
                 var hasEquals = false;
 
@@ -76,7 +67,6 @@ namespace entra21_tests
                     if(a[j] == result[i])
                     {
                         hasEquals = true;
-                        a[j] = null;
                         break;
                     }   
                 }
@@ -88,13 +78,9 @@ namespace entra21_tests
             }
             return arraysAreEquals;
 		}
-        public void Exercise5()
+        public double Exercise5()
 		{
             const int arraysLength = 15;
-
-            var belowAverage = 0;
-            var aboveAverage = 0;
-            var onAverage = 0;
 
             var soma = 0.0;
             var average = 0.0;
@@ -107,24 +93,31 @@ namespace entra21_tests
             {
                 soma += arrayOfNumbers[i];
             }
-            average = soma / arraysLength;
+            average = soma / arraysLength;         
+            return average;
+        }
+        public int[] Exercise6()
+		{
+            const int arraysLength = 12;
 
-            foreach (var item in arrayOfNumbers)
+            var a = new int[arraysLength]{
+                20, 21, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30
+            };
+            var b = new int[arraysLength]{
+                31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42
+            };
+            var c = new int[arraysLength];
+
+            Array.Sort(a);
+
+            Array.Reverse(b);
+
+            for (int i = 0; i < arraysLength; i++)
             {
-                if(item < soma)
-                {
-                    belowAverage++;
-                }
-                else if(item > soma)
-                {
-                    aboveAverage++;
-                }
-                else
-                {
-                    onAverage++;
-                }
-            }           
-            
+                c[i] = a[i] + b[i];
+            }
+            Array.Sort(c);
+            return c.ToArray();
         }
 	}    
 }

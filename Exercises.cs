@@ -172,18 +172,13 @@ namespace entra21_tests
         
         public List<int> Exercise17(List<int> tabuada, int input)
 		{
-            while (true)
+            for (var i = 0; i < 11; i++)
             {
-                if (input == -1)
-                {
-                    break;
-                }
-                for (var i = 0; i < 11; i++)
-                {
-                    tabuada[i] = input * i;
-                }
+                tabuada[i] = input * i;
             }
-            return tabuada;
-		}
-    }
+            return tabuada;            
+
+        }
+            
+	}
 }
