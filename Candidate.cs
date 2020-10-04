@@ -22,11 +22,6 @@ namespace entra21_tests
             Votes = votes;
         }
 
-        // public candidate(List<(Guid Id, string name, string cpf, int votes)> candidates)
-        // {
-        //     this.candidates = candidates;
-        // }
-
         public Guid Id { get; set; }
 
 

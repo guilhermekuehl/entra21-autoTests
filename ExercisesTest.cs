@@ -286,7 +286,6 @@ namespace entra21_tests
 
             Assert.Equal(expected, returnedValues);
         }
-        
         [Theory]
         [InlineData (1, new int[11]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}, new int[11]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10})]
         public void should_return_1_until_10(int input, int[] tabuada, int[] expected)

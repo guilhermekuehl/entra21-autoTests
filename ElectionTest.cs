@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -105,7 +104,6 @@ namespace entra21_tests
         }
         
         [Fact]
-
         public void should_return_both_candidates_when_occurs_draw()
         {
             // Dado / Setup
