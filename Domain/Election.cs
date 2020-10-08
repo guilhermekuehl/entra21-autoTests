@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Domain;
 
-namespace entra21_tests
+namespace Domain
 {
     class Election
     {
@@ -10,6 +11,11 @@ namespace entra21_tests
         // Sempre em PascalCase
         private List<Candidate> candidates { get; set; }
         public IReadOnlyCollection<Candidate> Candidates => candidates;
+        
+        public Election()
+        {
+            candidates = new List<Candidate>();
+        }
         public bool CreateCandidates(List<(string name, string cpf)> candidate, string password)
         {
             if (password == "Pa$$w0rd")
@@ -44,6 +50,11 @@ namespace entra21_tests
             for (int i = 1; i < Candidates.Count; i++)
             {
                 if (candidates[i].Votes > winners[0].Votes)
+                {
+                    winners.Clear();
+                    winners.Add(candidates[i]);
+                }
+                else if (candidates[i].Votes == winners[0].Votes)
                 {
                     winners.Add(candidates[i]);
                 }

@@ -1,7 +1,8 @@
 using System;
+using Domain;
 using Xunit;
 
-namespace entra21_tests
+namespace Tests
 {
     public class CalculatorTest
     {

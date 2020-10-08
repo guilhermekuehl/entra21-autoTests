@@ -1,7 +1,6 @@
 using System;
-using System.Collections.Generic;
 
-namespace entra21_tests
+namespace Domain
 {
     public class Candidate
     {
@@ -13,13 +12,12 @@ namespace entra21_tests
             Cpf = cpf;
             Votes = 0;    
         }
-
-        public Candidate(Guid id, string name, string cpf, int votes)
+        public Candidate(Guid id, string name, string cpf, int vote)
         {
             Id = id;
             Name = name;
             Cpf = cpf;
-            Votes = votes;
+            Votes = vote;    
         }
 
         public Guid Id { get; set; }
