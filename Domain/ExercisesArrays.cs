@@ -1,10 +1,9 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace Domain
 {
-    class ExercisesArrays
+    public class ExercisesArrays
     {
         public double[] Exercise1()
         {

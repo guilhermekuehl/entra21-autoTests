@@ -1,11 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Domain;
 
 namespace Domain
 {
-    class Election
+    public class Election
     {
         // Propriedade abaixo:
         // Sempre em PascalCase

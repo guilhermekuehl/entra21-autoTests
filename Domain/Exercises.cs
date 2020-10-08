@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Domain
 {
-    class Exercises
+    public class Exercises
     {
         public int[] Exercise1A()
         {
