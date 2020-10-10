@@ -8,19 +8,23 @@ namespace Domain
     {
         // Propriedade abaixo:
         // Sempre em PascalCase
-        private List<Candidate> candidates { get; set; }
-        public IReadOnlyCollection<Candidate> Candidates => candidates;
+        private List<Candidate> _candidates { get; set; }
+        public IReadOnlyCollection<Candidate> Candidates => _candidates;
         
         public Election()
         {
-            candidates = new List<Candidate>();
+            _candidates = new List<Candidate>();
         }
-        public bool CreateCandidates(List<(string name, string cpf)> candidate, string password)
+        public bool CreateCandidates(List<Candidate> candidates, string password)
         {
             if (password == "Pa$$w0rd")
             {
-                candidates = candidate.Select(x => {
-                return new Candidate(x.name, x.cpf);}).ToList();
+                if (candidates == null)
+                {
+                    return true;
+                }
+                
+                _candidates = candidates;
 
                 return true;
             }
@@ -32,30 +36,36 @@ namespace Domain
 
         public Guid GetCandidateIdByCpf(string cpf)
         {
-            return Candidates.First(x => x.Cpf == cpf).Id;
+            return Candidates.FirstOrDefault(x => x.Cpf == cpf).Id;
         }
         public List<Guid> GetCandidatesIdByName(string name)
         {
             return Candidates.Where(x => x.Name == name).Select(N => N.Id).ToList();
         }
-        public void Vote(Guid id)
+        public bool Vote(string cpf)
         {
-            var foundCandidate = candidates.Find(x => x.Id == id);
-            foundCandidate.Votes++;
+            var candidate = _candidates.FirstOrDefault(x => x.Cpf == cpf);
+            if (candidate == null)
+            {
+                return false;
+            }
+
+            candidate.Vote();
+            return true;
         }
         public List<Candidate> GetWinners()
         {
-            var winners = new List<Candidate>{candidates[0]};
+            var winners = new List<Candidate>{_candidates[0]};
             for (int i = 1; i < Candidates.Count; i++)
             {
-                if (candidates[i].Votes > winners[0].Votes)
+                if (_candidates[i].Votes > winners[0].Votes)
                 {
                     winners.Clear();
-                    winners.Add(candidates[i]);
+                    winners.Add(_candidates[i]);
                 }
-                else if (candidates[i].Votes == winners[0].Votes)
+                else if (_candidates[i].Votes == winners[0].Votes)
                 {
-                    winners.Add(candidates[i]);
+                    winners.Add(_candidates[i]);
                 }
             }
             return winners;

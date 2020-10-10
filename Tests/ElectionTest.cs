@@ -71,7 +71,7 @@ namespace Tests
             election.Vote(fernando.Cpf);
             // Deve / Asserções
             var candidateFernando = election.Candidates.First(x => x.Id == fernando.Id);
-            var candidateAna = election.Candidates.First(x => x.Id == fernando.Id);
+            var candidateAna = election.Candidates.First(x => x.Id == ana.Id);
             Assert.Equal(2, candidateFernando.Votes);
             Assert.Equal(0, candidateAna.Votes);
         }
